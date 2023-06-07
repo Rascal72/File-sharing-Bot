@@ -48,6 +48,8 @@ async def get_messages(client, message_ids):
                 chat_id=client.db_channel.id,
                 message_ids=temb_ids
             )
+            await asyncio.sleep(30)
+            await msgs.delete()
         except FloodWait as e:
             await asyncio.sleep(e.x)
             msgs = await client.get_messages(
